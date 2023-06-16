@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Companies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark">
+    <div class="container vw-75 p-5 d-flex justify-content-center align-items-center flex-column">
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+</body>
+<script>
+    var data = <%- JSON.stringify(data) %>;
+    var age = ["Below 20","20-24","24-28","28-32","32-36","36-40"];
+    var c = data.c;
+    var result = [];
+    var student_age = data.s.age;
+    var cpi = data.s.cpi;
+    var index;
+    if(student_age < 20) index = 0;
+    else if(student_age<24) index = 1;
+    else if(student_age< 28) index = 2;
+    else if(student_age<32) index = 3;
+    else if(student_age<36) index = 4;
+    else if(student_age<40) index=5;
+    c.forEach((company)=>{
+        if(company.cpi <= cpi && index==company.age)
+        {
+            console.log(company.age);
+            result.push(company);
+        }
+    });
+    console.log(result.length);
+    
+    if(result.length === 0)
+    {
+       document.querySelector('.container').innerHTML += `<div class="alert alert-danger d-flex align-items-center" role="alert">
+  <div>
+    <h4> No Companies for you!! Better Luck Next Time !</h4>
+    </div>`
+    }
+    else
+    {
+        for(i=0;i<result.length;i++)
+        {
+        document.querySelector('.container').innerHTML += `<div class="card mb-4">
+        <div class="card-body" style="width:50vw">
+          <h5 class="card-title">Company name:${result[i].name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Salary:${result[i].package}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Position:${result[i].position}</h6>
+          <p class="card-text">Description of the job:${result[i].description}</p>
+          <p>Website:<a href="${result[i].website}" class="card-link">${result[i].website}</a></p>
+        </div>
+      </div> `
+    }
+    }
+</script>
+</html>

@@ -17,8 +17,8 @@ mongoose.connect('mongodb://127.0.0.1:27017', {
 app.set('view engine', 'ejs');//Set view engine as ejs
 app.use(express.json());
 
-app.set("views", path.join(__dirname, "./Frontend/views"));
-app.use(express.static("./Frontend/public"));
+app.set("views", path.join(__dirname, "Frontend/views"));
+app.use(express.static("Frontend/public"));
 
 app.use(express.urlencoded({ extended: true }));//Gets data from post request
 app.use(cookieParser());

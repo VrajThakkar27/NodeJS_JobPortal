@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));//Gets data from post request
 app.use(cookieParser());
 
 app.use('/WOC_NodeJS_JobPortal',studentRouter);
-app.use('WOC_NodeJS_JobPortal',companyRouter);
+app.use('/WOC_NodeJS_JobPortal',companyRouter);
 
 app.listen(5000,()=>{
     console.log('Server is working');

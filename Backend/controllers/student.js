@@ -20,7 +20,7 @@ const registerStudentPost=async(req,res)=>{
     }
     if(password!=confirmPassword)
     {
-        alert('Passsword doesnot match the confirm password');
+        // alert('Passsword doesnot match the confirm password');
         return res.status(404).json({
             success:false,
             message:'Passsword doesnot match the confirm password',

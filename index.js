@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const jwt=require('jsonwebtoken');
-const bcrypt=require('bcrypt');
+// const jwt=require('jsonwebtoken');
+// const bcrypt=require('bcrypt');
 
 const app = express();
 const studentRouter=require('./Backend/routes/student.js');
